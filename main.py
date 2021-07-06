@@ -2,93 +2,93 @@ import random
 
 
 def print_game_board():
-    print(" ", gameBoard[1], " | ", gameBoard[2], " | ", gameBoard[3])
+    print(" ", game_board[1], " | ", game_board[2], " | ", game_board[3])
     print("-----------------")
-    print(" ", gameBoard[4], " | ", gameBoard[5], " | ", gameBoard[6])
+    print(" ", game_board[4], " | ", game_board[5], " | ", game_board[6])
     print("-----------------")
-    print(" ", gameBoard[7], " | ", gameBoard[8], " | ", gameBoard[9])
+    print(" ", game_board[7], " | ", game_board[8], " | ", game_board[9])
 
 
 def check_game_state():
     # Row win conditions
-    if gameBoard[1] == gameBoard[2] and gameBoard[2] == gameBoard[3] and gameBoard[2] != ' ':
-        if currentPlayer == 'O':
-            print("You have won!")
+    if game_board[1] == game_board[2] and game_board[2] == game_board[3] and game_board[2] != ' ':
+        if current_player == 'O':
+            print("Player 1 wins!")
             return True
-        if currentPlayer == 'X':
-            print("You have lost to the computer.")
-            return True
-        else:
-            pass
-
-    if gameBoard[4] == gameBoard[5] and gameBoard[5] == gameBoard[6] and gameBoard[5] != ' ':
-        if currentPlayer == 'O':
-            print("You have won!")
-            return True
-        if currentPlayer == 'X':
-            print("You have lost to the computer.")
+        elif current_player == 'X':
+            print("Player 2 wins!")
             return True
         else:
             pass
 
-    if gameBoard[7] == gameBoard[8] and gameBoard[8] == gameBoard[9] and gameBoard[8] != ' ':
-        if currentPlayer == 'O':
-            print("You have won!")
+    if game_board[4] == game_board[5] and game_board[5] == game_board[6] and game_board[5] != ' ':
+        if current_player == 'O':
+            print("Player 1 wins!")
             return True
-        if currentPlayer == 'X':
-            print("You have lost to the computer.")
+        elif current_player == 'X':
+            print("Player 2 wins!")
+            return True
+        else:
+            pass
+
+    if game_board[7] == game_board[8] and game_board[8] == game_board[9] and game_board[8] != ' ':
+        if current_player == 'O':
+            print("Player 1 wins!")
+            return True
+        elif current_player == 'X':
+            print("Player 2 wins!")
             return True
         else:
             pass
 
     # Column win conditions
-    if gameBoard[1] == gameBoard[4] and gameBoard[4] == gameBoard[7] and gameBoard[4] != ' ':
-        if currentPlayer == 'O':
-            print("You have won!")
+    if game_board[1] == game_board[4] and game_board[4] == game_board[7] and game_board[4] != ' ':
+        if current_player == 'O':
+            print("Player 1 wins!")
             return True
-        if currentPlayer == 'X':
-            print("You have lost to the computer.")
-            return True
-        else:
-            pass
-
-    if gameBoard[2] == gameBoard[5] and gameBoard[5] == gameBoard[8] and gameBoard[5] != ' ':
-        if currentPlayer == 'O':
-            print("You have won!")
-            return True
-        if currentPlayer == 'X':
-            print("You have lost to the computer.")
+        elif current_player == 'X':
+            print("Player 2 wins!")
             return True
         else:
             pass
 
-    if gameBoard[3] == gameBoard[6] and gameBoard[6] == gameBoard[9] and gameBoard[6] != ' ':
-        if currentPlayer == 'O':
-            print("You have won!")
+    if game_board[2] == game_board[5] and game_board[5] == game_board[8] and game_board[5] != ' ':
+        if current_player == 'O':
+            print("Player 1 wins!")
             return True
-        if currentPlayer == 'X':
-            print("You have lost to the computer.")
+        elif current_player == 'X':
+            print("Player 2 wins!")
+            return True
+        else:
+            pass
+
+    if game_board[3] == game_board[6] and game_board[6] == game_board[9] and game_board[6] != ' ':
+        if current_player == 'O':
+            print("Player 1 wins!")
+            return True
+        elif current_player == 'X':
+            print("Player 2 wins!")
             return True
         else:
             pass
 
     # Diagonal win conditions
-    if gameBoard[1] == gameBoard[5] and gameBoard[5] == gameBoard[9] and gameBoard[5] != ' ':
-        if currentPlayer == 'O':
-            print("You have won!")
+    if game_board[1] == game_board[5] and game_board[5] == game_board[9] and game_board[5] != ' ':
+        if current_player == 'O':
+            print("Player 1 wins!")
             return True
-        if currentPlayer == 'X':
-            print("You have lost to the computer.")
+        elif current_player == 'X':
+            print("Player 2 wins!")
             return True
         else:
             pass
 
-    if gameBoard[3] == gameBoard[5] and gameBoard[5] == gameBoard[7] and gameBoard[5] != ' ':
-        if currentPlayer == 'O':
-            print("You have won!")
+    if game_board[3] == game_board[5] and game_board[5] == game_board[7] and game_board[5] != ' ':
+        if current_player == 'O':
+            print("Player 1 wins!")
             return True
-        if currentPlayer == 'X':
-            print("You have lost to the computer.")
+        elif current_player == 'X':
+            print("Player 2 wins!")
             return True
         else:
             pass
@@ -96,7 +96,7 @@ def check_game_state():
 
 # Introductory text
 print("Welcome to Tic-Tac-Toe!")
-print("You are O's, the computer is X's.")
+print("Player 1 is O's, Player 2 is X's.")
 print("The game board will look like this:")
 print(" ", "1", " | ", "2", " | ", "3")
 print("-----------------")
@@ -109,83 +109,156 @@ print("For example, if you want to claim the middle space, you would enter 5 whe
 # Outer game loop; initializes conditions and allows for replay.
 while True:
     # Initializing conditions
-    currentPlayer = ''
-    gameBoard = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-    spacesFilled = 0
+    current_player = ''
+    game_board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+    spaces_filled = 0
+
+    # Determining game mode
+    print("How would you like to play?")
+    print("1. Versus a computer.")
+    print("2. Versus a local player.")
+    game_type = int(input("Make your selection: "))
+    if game_type < 1 or game_type > 2:
+        print("Invalid selection; try again.")
+        continue
 
     # Determining play order
     print("Player order will be decided randomly.")
-    playOrder = random.randint(1, 2)
-    if playOrder == 1:
-        print("The player will go first.")
-        currentPlayer = 'O'
-    elif playOrder == 2:
-        print("The computer will go first.")
-        currentPlayer = 'X'
+    play_order = random.randint(1, 2)
+    if play_order == 1:
+        print("Player 1 will go first.")
+        current_player = 'O'
+    elif play_order == 2:
+        print("Player 2 will go first.")
+        current_player = 'X'
     else:
-        print("This is an error handling message. Something strange happened.")
+        print("This is an error handling message. Something strange happened. Code 2")
 
     print("Beginning a new game...")
     print_game_board()
 
     # Inner game loop; contains logic for turns and checks game state.
     while True:
-        # Draw condition
-        if spacesFilled == 9:
-            print("The game has resulted in a draw.")
+        # Player versus Computer
+        if game_type == 1:
+            while True:
+                # Draw condition
+                if spaces_filled == 9:
+                    print("The game has resulted in a draw.")
+                    break
+
+                # Player turn
+                elif current_player == 'O':
+                    # Get the player's move selection.
+                    player_input = int(input("Player 1's turn, which space would you like to claim? "))
+
+                    # Legal move
+                    if game_board[player_input] == ' ':
+                        game_board[player_input] = 'O'
+                        spaces_filled = spaces_filled + 1
+                        print_game_board()
+                        check_game_state()
+                        if check_game_state() is True:
+                            break
+                        current_player = 'X'
+
+                    # Illegal move
+                    elif game_board[player_input] != ' ':
+                        print("Invalid move; the space is already occupied. Try again.")
+                        continue
+
+                # Computer turn
+                elif current_player == 'X':
+                    # A random move is produced
+                    fill_board = random.randint(1, 9)
+
+                    # Legal move is found
+                    if game_board[fill_board] == ' ':
+                        print("The computer will now make their move.")
+                        game_board[fill_board] = 'X'
+                        spaces_filled = spaces_filled + 1
+                        print_game_board()
+                        check_game_state()
+                        if check_game_state() is True:
+                            break
+                        current_player = 'O'
+
+                    # Legal move is not found
+                    elif game_board[fill_board] != ' ':
+                        continue
+
+                # Error handling?
+                else:
+                    print("This is an error handling message. Something strange happened. Code 3")
+
+        # Player versus Player
+        elif game_type == 2:
+            while True:
+                # Draw condition
+                if spaces_filled == 9:
+                    print("The game has resulted in a draw.")
+                    break
+
+                # Player 1 turn
+                elif current_player == 'O':
+                    # Get the player's move selection.
+                    player_input = int(input("Player 1's turn, which space would you like to claim? "))
+
+                    # Legal move
+                    if game_board[player_input] == ' ':
+                        game_board[player_input] = 'O'
+                        spaces_filled = spaces_filled + 1
+                        print_game_board()
+                        check_game_state()
+                        if check_game_state() is True:
+                            break
+                        else:
+                            pass
+                        current_player = 'X'
+
+                    # Illegal move
+                    elif game_board[player_input] != ' ':
+                        print("Invalid move; the space is already occupied. Try again.")
+                        continue
+
+                # Player 2 turn
+                elif current_player == 'X':
+                    # Get the player's move selection.
+                    player_input = int(input("Player 2's turn, which space would you like to claim? "))
+
+                    # Legal move
+                    if game_board[player_input] == ' ':
+                        game_board[player_input] = 'X'
+                        spaces_filled = spaces_filled + 1
+                        print_game_board()
+                        check_game_state()
+                        if check_game_state() is True:
+                            break
+                        else:
+                            pass
+                        current_player = 'O'
+
+                    # Illegal move
+                    elif game_board[player_input] != ' ':
+                        print("Invalid move; the space is already occupied. Try again.")
+                        continue
+
+                # Error handling?
+                else:
+                    print("This is an error handling message. Something strange happened. Code 4")
+
+        else:
+            print("This is an error handling message. Something strange happened. Code 5")
+
+        if check_game_state() is True or spaces_filled == 9:
             break
 
-        # Player turn
-        elif currentPlayer == 'O':
-            # Get the player's move selection.
-            playerInput = int(input("Which space would you like to claim? "))
-
-            # Legal move
-            if gameBoard[playerInput] == ' ':
-                gameBoard[playerInput] = 'O'
-                spacesFilled = spacesFilled + 1
-                print_game_board()
-                check_game_state()
-                if check_game_state() is True:
-                    break
-                currentPlayer = 'X'
-
-            # Illegal move
-            elif gameBoard[playerInput] != ' ':
-                print("Invalid move; the space is already occupied. Try again.")
-                continue
-
-        # Computer turn
-        elif currentPlayer == 'X':
-            # A random move is produced
-            fillBoard = random.randint(1, 9)
-
-            # Legal move is found
-            if gameBoard[fillBoard] == ' ':
-                print("The computer will now make their move.")
-                gameBoard[fillBoard] = 'X'
-                spacesFilled = spacesFilled + 1
-                print_game_board()
-                check_game_state()
-                if check_game_state() is True:
-                    break
-                currentPlayer = 'O'
-
-            # Legal move is not found
-            elif gameBoard[fillBoard] != ' ':
-                continue
-
-        # Error handling?
-        else:
-            print("This is an error handling message. Something strange happened.")
-
-    # Play again?
-    playAgain = input("Would you like to play again? Enter yes or no: ")
-    if playAgain == "yes":
+    play_again = int(input("Would you like to play again? Enter 1 for yes, 2 for no: "))
+    if play_again == 1:
         print("\n")
         continue
-    elif playAgain == "no":
+    elif play_again == 2:
         print("Thanks for playing!")
         exit()
     else:
-        print("Invalid selection! Try again.")
+        print("Invalid selection, try again.")
